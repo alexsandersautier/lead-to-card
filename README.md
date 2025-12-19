@@ -9,14 +9,17 @@ Event management system developed with Django, focused on demonstrating asynchro
 The system has three main routes:
 
 ### 1. **Home** (`/`)
+
 - Captures participant's name and email interested in the event
 
 ### 2. **Register** (`/register`)
+
 - Validates the provided data (name and email)
 - Stores information in the database
 - Triggers email sending with event invitation
 
 ### 3. **Confirmation** (`/confirmation`)
+
 - Displays a friendly message confirming event registration
 
 ## 🚀 Technical Motivation
@@ -24,9 +27,11 @@ The system has three main routes:
 This project was developed to demonstrate in practice the benefits of asynchronous processing with **Celery**.
 
 ### Without Celery
+
 The user would need to wait for the entire email sending operation to complete before viewing the confirmation page, resulting in unnecessary waiting time.
 
 ### With Celery
+
 The email sending task is delegated to Celery, allowing the user to view the confirmation page instantly while the email is processed in the background.
 
 ## 🛠️ Technologies Used
@@ -39,12 +44,21 @@ The email sending task is delegated to Celery, allowing the user to view the con
 ## 📦 Installation and Setup
 
 ### 1. Clone the repository
+
 ```bash
 git clone https://github.com/alexsandersautier/lead-to-card.git
 cd event-goals
 ```
 
+### 1.1. Create .env file
+
+**Use Gmail**
+
+- `USER` → Email address used to send emails
+- `PASSWORD` → App password (not your regular Gmail password)
+
 ### 2. Create and activate virtual environment
+
 ```bash
 # Create virtual environment
 python -m venv venv
@@ -58,21 +72,25 @@ source venv/bin/activate
 ```
 
 ### 3. Install dependencies
+
 ```bash
 pip install -r requirements.txt
 ```
 
 ### 4. Run database migrations
+
 ```bash
 python manage.py migrate
 ```
 
 ### 5. Create a superuser to access the admin panel
+
 ```bash
 python manage.py createsuperuser
 ```
 
-### 6. Start Redis with Docker
+### 6. Start Redis with Docker(Need to get a Redis Image)
+
 ```bash
 docker run -d -p 6379:6379 redis
 ```
@@ -82,17 +100,15 @@ docker run -d -p 6379:6379 redis
 To run the project, you will need **two terminals** open simultaneously:
 
 ### Terminal 1 - Celery Worker
+
 ```bash
 celery -A core worker --loglevel=INFO
 ```
 
 ### Terminal 2 - Django Server
+
 ```bash
 python manage.py runserver
 ```
 
-Access the application at: `http://localhost:8000`
-
-## 🔑 Admin Panel Access
-
-After creating the superuser, access: `http://127.0.0.1:8000/`
+Access the application at: `http://127.0.0.1:8000/`
