@@ -40,7 +40,7 @@ The email sending task is delegated to Celery, allowing the user to view the con
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/your-username/event-goals.git
+git clone https://github.com/alexsandersautier/lead-to-card.git
 cd event-goals
 ```
 
