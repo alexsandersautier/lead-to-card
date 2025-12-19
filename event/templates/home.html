@@ -1,0 +1,20 @@
+{% extends 'base.html'%}
+{% block 'content' %}
+<div class="container d-flex flex-column justify-content-center align-items-center">
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert {{ message.tags }}" role="alert">
+                {{ message }}
+                
+            </div>
+        {% endfor %}    
+    {% endif %}
+    <h1>Bem-vindo ao MAIOR EVENTO</h1>
+    <hr>
+    <form class="w-100" action="{% url 'register' %}" method="post">
+        {% csrf_token %}
+        {{form}}
+        <button type="submit" class="btn btn-primary mt-3">Cadastrar-se</button>
+    </form>
+</div>
+{% endblock %}

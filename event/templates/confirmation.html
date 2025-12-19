@@ -1,0 +1,17 @@
+{% extends 'base.html'%}
+{% block 'content' %}
+<div class="container d-flex flex-column justify-content-center align-items-center">
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert {{ message.tags }}" role="alert">
+                {{ message }}
+                
+            </div>
+        {% endfor %}    
+    {% endif %}
+    <br>
+    <h1>{{ name }} sua inscriação ao evento foi confirmado com sucesso!</h1>
+    <p>Enviamos um e-mail para {{ email }} com dados de localização do evento, horários e seu ingresso!</p>
+
+</div>
+{% endblock %}
